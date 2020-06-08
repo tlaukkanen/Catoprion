@@ -2,16 +2,14 @@ version: "3.2"
 
 services:
   blob:
-    image: microsoft/azure-storage-emulator
+    image: mcr.microsoft.com/azure-storage/azurite
     ports:
         - "10000:10000"
-        - "10001:10001"
-        - "10002:10002"
   db:
     image: piranha-sql-server
     build:
       context: .
-      dockerfile: sql-dev/Dockerfile
+      dockerfile: docker/Dockerfile
     ports:
       - "1402:1433"
     environment:
