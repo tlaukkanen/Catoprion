@@ -145,9 +145,9 @@ stages:
               displayName: 'Apply database schema changes'
               inputs:
                 azureSubscription: 'sc-codeofme-dev'
-                ServerName: '$(SqlServerNameDev).database.windows.net'
-                DatabaseName: '$(DbNameDev)'
-                SqlUsername: '$(DbLoginDev)'
-                SqlPassword: '$(DbPasswordDev)'
+                ServerName: '$(SqlServerName).database.windows.net'
+                DatabaseName: '$(DbName)'
+                SqlUsername: '$(DbLogin)'
+                SqlPassword: '$(DbPassword)'
                 deployType: SqlTask
                 SqlFile: '$(Pipeline.Workspace)/drop/sql/update_to_latest.sql'
