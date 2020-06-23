@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,8 +10,9 @@ using Piranha.AttributeBuilder;
 using Piranha.AspNetCore.Identity.SQLServer;
 using Piranha.Data.EF.SQLServer;
 using Piranha.Manager.Editor;
+using GraphiQl;
 
-namespace codeof.me_backend
+namespace Catoprion
 {
     public class Startup
     {
@@ -42,6 +44,11 @@ namespace codeof.me_backend
                 options.UseIdentityWithSeed<IdentitySQLServerDb>(db =>
                     db.UseSqlServer(_config.GetConnectionString("piranha")));
             });
+
+            services.AddSpaStaticFiles(options =>
+            {
+                options.RootPath = "ClientApp/build";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +59,9 @@ namespace codeof.me_backend
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseGraphiQl();
+            app.UseSpaStaticFiles();
+            
             // Initialize Piranha
             App.Init(api);
 
@@ -70,6 +80,16 @@ namespace codeof.me_backend
                 options.UseTinyMCE();
                 options.UseIdentity();
             });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+                if(env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
+
         }
     }
 }

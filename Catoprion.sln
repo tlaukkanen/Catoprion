@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codeof.me-backend", "CodeOfMe\codeof.me-backend.csproj", "{C93E79E3-801B-4B00-8ADD-C2547D952B46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catoprion", "Catoprion\Catoprion.csproj", "{C93E79E3-801B-4B00-8ADD-C2547D952B46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
